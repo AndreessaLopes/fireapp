@@ -7,6 +7,7 @@ import {
   getDoc,
   getDocs,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { useState } from "react";
 import "./app.css";
@@ -93,6 +94,13 @@ function App() {
       });
   }
 
+  async function excluirPost(id) {
+    const docRef = doc(db, "posts", id);
+    await deleteDoc(docRef).then(() => {
+      alert("Documento excluído com sucesso!");
+    });
+  }
+
   return (
     <div className="App">
       <h1> React JS + Firebase :) </h1>
@@ -130,9 +138,12 @@ function App() {
           {posts.map((post) => {
             return (
               <li key={post.id}>
-                <span>ID: {post.id}</span> <br />
+                <strong>ID: {post.id}</strong> <br />
                 <span>Título: {post.titulo}</span> <br />
-                <span>Autor: {post.autor}</span> <br /> <br />
+                <span>Autor: {post.autor}</span> <br />
+                <button onClick={() => excluirPost()}>
+                  Excluir
+                </button> <br /> <br />
               </li>
             );
           })}
