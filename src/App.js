@@ -91,18 +91,18 @@ function App() {
       .catch((error) => {
         console.log("Erro ao atualizar o documento: ", error);
       });
+  }
 
   return (
     <div className="App">
       <h1> React JS + Firebase :) </h1>
 
       <div className="container">
-
         <label>ID do post:</label>
         <input
-        placeholder="Digite o ID do post"
-        value={idPost}
-        onChange={(e) => setIdPost(e.target.value)}
+          placeholder="Digite o ID do post"
+          value={idPost}
+          onChange={(e) => setIdPost(e.target.value)}
         />
         <br />
         <label>Título:</label>
